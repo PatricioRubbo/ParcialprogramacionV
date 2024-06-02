@@ -40,23 +40,25 @@ namespace ParcialprogramacionV.Controllers
                 return View();
         }
 
+        
         public IActionResult Editar(int IdUsuario)
         {
-            //METODO SOLO DEVUELVE LA VISTA
-            var ousuario = _UsuarioDatos.Obtener(IdUsuario);
-            return View(ousuario);
+            // METODO SOLO DEVUELVE LA VISTA
+            var oUsuario = _UsuarioDatos.Obtener(IdUsuario);
+            return View(oUsuario);
         }
 
         [HttpPost]
         public IActionResult Editar(UsuarioModel oUsuario)
         {
             if (!ModelState.IsValid)
-                return View();
+                return View(oUsuario); // Retornar el modelo para que se muestren los errores
+
             var respuesta = _UsuarioDatos.Editar(oUsuario);
             if (respuesta)
                 return RedirectToAction("Listar");
             else
-                return View();
+                return View(oUsuario); // Retornar el modelo para que se muestren los errores
         }
 
 

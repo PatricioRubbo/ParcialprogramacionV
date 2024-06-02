@@ -5,7 +5,7 @@
 }
 <div class="card">
     <div class="card-header">
-        Lista Usuario
+        <i class="bi bi-list-task"></i> Lista de Usuarios
     </div>
     <div class="card-body">
         <a asp-action="Guardar" asp-controller="Administrador" class="btn btn-success"><i class="bi bi-plus-circle"></i> Crear Nuevo</a>
@@ -32,7 +32,7 @@
                         <td>@item.Correo</td>
                         <td>
                             <a asp-action="Editar" asp-controller="Administrador" class="btn btn-primary btn-sm" asp-route-IdUsuario="@item.IdUsuario">Editar</a>
-                            <a asp-action="Eliminar" asp-controller="Administrador" class="btn btn-danger btn-sm" asp-route-IdUsuario="@item.IdUsuario">Eliminar</a>
+                            <a asp-action="Eliminar" asp-controller="Administrador" class="btn btn-danger btn-sm" asp-route-IdUsuario="@item.IdUsuario"><i class="bi bi-trash3"></i></a>
                         </td>
                     </tr>
 

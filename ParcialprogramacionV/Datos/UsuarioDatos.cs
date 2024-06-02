@@ -113,7 +113,7 @@ namespace ParcialprogramacionV.Datos
         }
 
 
-        public bool Editar(UsuarioModel ousuario)
+        public bool Editar(UsuarioModel oUsuario)
         {
             bool rpta;
 
@@ -124,28 +124,30 @@ namespace ParcialprogramacionV.Datos
                 using (var conexion = new SqlConnection(cn.getCadenaSQL()))
                 {
                     conexion.Open();
-                    SqlCommand cmd = new SqlCommand("sp_Editar", conexion);
-                    cmd.Parameters.AddWithValue("IdContacto", ousuario.IdUsuario);
-                    cmd.Parameters.AddWithValue("Nombre", ousuario.Nombre);
-                    cmd.Parameters.AddWithValue("Apellido", ousuario.Apellido);
-                    cmd.Parameters.AddWithValue("Dni", ousuario.Dni);
-                    cmd.Parameters.AddWithValue("Telefono", ousuario.Telefono);
-                    cmd.Parameters.AddWithValue("Correo", ousuario.Correo);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.ExecuteNonQuery();
+                    using (SqlCommand cmd = new SqlCommand("sp_Editar", conexion))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("IdUsuario", oUsuario.IdUsuario);
+                        cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
+                        cmd.Parameters.AddWithValue("Apellido", oUsuario.Apellido);
+                        cmd.Parameters.AddWithValue("Dni", oUsuario.Dni);
+                        cmd.Parameters.AddWithValue("Telefono", oUsuario.Telefono);
+                        cmd.Parameters.AddWithValue("Correo", oUsuario.Correo);
+
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 rpta = true;
-
-
             }
             catch (Exception e)
             {
-
                 string error = e.Message;
+                // Aquí podrías registrar el error en un archivo de log o base de datos para fines de depuración
                 rpta = false;
             }
             return rpta;
         }
+
 
         public bool Eliminar(int IdUsuario)
         {

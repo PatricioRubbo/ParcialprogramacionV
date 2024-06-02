@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        Editar Usuario
+        Eliminar Usuario
     </div>
     <div class="card-body">
 
@@ -16,10 +16,10 @@
             <input asp-for="IdUsuario" type="hidden" class="form-control">
 
             <div class="alert alert-danger" role="alert">
-                ¿Desea eliminar el contacto : @Html.DisplayTextFor(m => m.Nombre) ?
+                ¿Quieres eliminar el Usuario  @Html.DisplayTextFor(m => m.Nombre) ?
             </div>
 
-            <button type="submit" class="btn btn-danger">Elimnar</button>
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
             <a asp-action="Listar" asp-controller="Administrador" class="btn btn-warning">Volver a la lista</a>
         </form>
 
