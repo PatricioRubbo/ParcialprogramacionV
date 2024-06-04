@@ -1,7 +1,7 @@
 ﻿using ParcialprogramacionV.Models;
 using System.Data.SqlClient;
 using System.Data;
-using ParcialprogramacionV.Datos;   
+
 
 
 namespace ParcialprogramacionV.Datos
@@ -142,7 +142,7 @@ namespace ParcialprogramacionV.Datos
             catch (Exception e)
             {
                 string error = e.Message;
-                // Aquí podrías registrar el error en un archivo de log o base de datos para fines de depuración
+               
                 rpta = false;
             }
             return rpta;
